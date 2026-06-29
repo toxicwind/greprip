@@ -2,8 +2,14 @@
 
 import subprocess
 import sys
+import signal
 
 from .translator import translate_grep_args
+
+try:
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+except AttributeError:
+    pass
 
 
 def main():
